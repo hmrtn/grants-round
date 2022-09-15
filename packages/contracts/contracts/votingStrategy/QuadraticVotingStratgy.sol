@@ -101,6 +101,7 @@ contract QuadraticVotingStrategy is IVotingStrategy, ReentrancyGuard, ERC721 {
         nonReentrant
     {
         // TODO: Add an allow list of votable IDs and prevent voting on invalid IDs
+        // Q: Do we want to store a the users vote history?
         require(balanceOf(voterAddress) > 0, "NOT_REGISTERED");
         require(creditBalance[voterAddress] > 0, "NO_CREDITS");
         for (uint256 i = 0; i < encodedVotes.length; i++) {
