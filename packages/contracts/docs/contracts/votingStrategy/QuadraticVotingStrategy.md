@@ -16,7 +16,7 @@
 function CREDIT_COST_PER_VOTE() external view returns (uint256)
 ```
 
-
+The voice credit cost per vote.
 
 
 
@@ -33,7 +33,7 @@ function CREDIT_COST_PER_VOTE() external view returns (uint256)
 function VOTE_CREDITS_PER_BADGE() external view returns (uint256)
 ```
 
-
+A scalar multiplier of the initial voice credits per ERC721 token per user.
 
 
 
@@ -83,13 +83,13 @@ function balanceOf(address owner) external view returns (uint256)
 |---|---|---|
 | _0 | uint256 | undefined |
 
-### credits
+### creditBalance
 
 ```solidity
-function credits(address) external view returns (uint256)
+function creditBalance(address) external view returns (uint256)
 ```
 
-
+Mapping of voter to their avaliable credit balance.
 
 
 
@@ -111,7 +111,7 @@ function credits(address) external view returns (uint256)
 function finalTally() external view returns (bytes)
 ```
 
-
+The tally count.
 
 
 
@@ -212,15 +212,15 @@ function ownerOf(uint256 tokenId) external view returns (address)
 function register(address registrant) external nonpayable
 ```
 
+Register the voter.
 
-
-
+*This function effectively mints a new ERC721 token to the registrant.*
 
 #### Parameters
 
 | Name | Type | Description |
 |---|---|---|
-| registrant | address | undefined |
+| registrant | address | The address of the voter to register. |
 
 ### safeTransferFrom
 
@@ -321,9 +321,9 @@ function symbol() external view returns (string)
 function tally() external nonpayable
 ```
 
+Tally the votes.
 
-
-
+*This function will calculate and store the a tally of the votes. This can be called at any time by anyone.*
 
 
 ### tokenURI
@@ -372,16 +372,16 @@ function transferFrom(address from, address to, uint256 tokenId) external nonpay
 function vote(bytes[] encodedVotes, address voterAddress) external nonpayable
 ```
 
+Vote on a grant.
 
-
-
+*The encoded votes are a list of bytes, each of which a tuple of (grantId, voteAmount). Amount is the number of votes to cast, which will deduct the squared amount from the voters credit balance.*
 
 #### Parameters
 
 | Name | Type | Description |
 |---|---|---|
-| encodedVotes | bytes[] | undefined |
-| voterAddress | address | undefined |
+| encodedVotes | bytes[] | The encoded votes. |
+| voterAddress | address | The address of the voter. |
 
 ### voterCount
 
@@ -389,7 +389,7 @@ function vote(bytes[] encodedVotes, address voterAddress) external nonpayable
 function voterCount() external view returns (uint256)
 ```
 
-
+The number of voters.
 
 
 
@@ -406,7 +406,7 @@ function voterCount() external view returns (uint256)
 function votes(uint256) external view returns (uint256 weight, uint256 amount)
 ```
 
-
+Mapping of vote ID to vote data.
 
 
 
@@ -429,7 +429,7 @@ function votes(uint256) external view returns (uint256 weight, uint256 amount)
 function votesData(uint256) external view returns (bytes)
 ```
 
-
+The vote byte data.
 
 
 
