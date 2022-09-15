@@ -66,7 +66,7 @@ describe("QuadraticVotingStrategy", function () {
         [9, 9],
       ].map((vote: number[]) => encodeVotes(vote[0], vote[1]));
       await QuadraticVotingStrategy.vote(encodedVotes, user0Address);
-      const credits = await QuadraticVotingStrategy.credits(user0Address);
+      const credits = await QuadraticVotingStrategy.creditBalance(user0Address);
       // expect balance to be 1000 - 9^2 - 17^2 - 25^2
       expect(credits).to.equal(1000 - 9 ** 2 - 19 ** 2 - 22 ** 2);
     });
@@ -85,7 +85,7 @@ describe("QuadraticVotingStrategy", function () {
         [9, 17],
       ].map((vote: number[]) => encodeVotes(vote[0], vote[1]));
       await QuadraticVotingStrategy.vote(encodedVotes, user1Address);
-      const credits = await QuadraticVotingStrategy.credits(user1Address);
+      const credits = await QuadraticVotingStrategy.creditBalance(user1Address);
       // expect balance to be 1000 - 9^2 - 4^2 - 17^2
       expect(credits).to.equal(1000 - 9 ** 2 - 4 ** 2 - 17 ** 2);
     });
